@@ -33,4 +33,32 @@ public class DrawManager : MonoBehaviour
             }
         }
     }
+
+    bool takeSnapshot;
+    public void OnClickButton()
+    {
+        takeSnapshot = true;
+    }
+
+    void OnRenderImage(RenderTexture src, RenderTexture dest)
+    {
+        if (takeSnapshot)
+        {
+            var t2d = new Texture2D(src.width, src.width, TextureFormat.RGB24,false);
+            RenderTexture.active = src;
+            t2d.ReadPixels(new Rect(0, 0, t2d.width, t2d.height), 0, 0);
+            
+            var pixels = t2d.GetPixels();
+            var count = 0;
+            for (int i = 0; i < pixels.Length; i++)
+            {
+                count += (pixels[i].r != pixels[0].r || pixels[i].g != pixels[0].g && pixels[i].b != pixels[0].b) ? 1 : 0;
+            }
+            
+            Debug.Log(count);
+        }
+
+        takeSnapshot = false;
+        Graphics.Blit(src, dest);
+    }
 }
