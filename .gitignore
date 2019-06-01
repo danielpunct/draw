@@ -1,0 +1,13 @@
+Draw_unity/Library/*
+Draw_unity/Temp/*
+Draw_unity/obj/*
+builds/*
+out/*
+ress/*
+Draw_unity/.vs/*
+Draw_unity/etc/*
+Draw_unity/Logs/*
+Draw_unity/.vscode/*
+Draw_unity/Assets/.idea/*.*
+Draw_unity/.idea/*.*
+*.csproj
