@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class Model : MonoBehaviour
@@ -9,10 +10,20 @@ public class Model : MonoBehaviour
   
   public Vector3 positionInFrame;
   public Vector3 rotationInFrame;
+  public Vector3 scaleInFrame;
 
   public void ShowInit()
   {
     outlineHolder.SetActive(true);
     coloredHolder.SetActive(false);
+  }
+
+  public void ShowPassed()
+  {
+    coloredHolder.SetActive(true);
+    coloredHolder.transform.SetParent(Game.Instance.pictureHolder);
+    var seq = DOTween.Sequence().AppendInterval(1)
+      .Append(coloredHolder.transform.DOLocalMove(positionInFrame, 1f))
+      .Append(coloredHolder.transform.DOScale(scaleInFrame, 1));
   }
 }

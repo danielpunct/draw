@@ -105,17 +105,17 @@ PrefabInstance:
     - target: {fileID: 9014425476967645080, guid: f4a11cf7e24bcfa43b3ee09544737e84,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 9014425476967645080, guid: f4a11cf7e24bcfa43b3ee09544737e84,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 9014425476967645080, guid: f4a11cf7e24bcfa43b3ee09544737e84,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 9014425476967645080, guid: f4a11cf7e24bcfa43b3ee09544737e84,
         type: 3}
@@ -141,6 +141,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5174562808155148147, guid: f4a11cf7e24bcfa43b3ee09544737e84,
+        type: 3}
+      propertyPath: positionInFrame.x
+      value: -0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 5174562808155148147, guid: f4a11cf7e24bcfa43b3ee09544737e84,
+        type: 3}
+      propertyPath: positionInFrame.y
+      value: -0.209
+      objectReference: {fileID: 0}
+    - target: {fileID: 5174562808155148147, guid: f4a11cf7e24bcfa43b3ee09544737e84,
+        type: 3}
+      propertyPath: positionInFrame.z
+      value: -1.482375
+      objectReference: {fileID: 0}
+    - target: {fileID: 5174562808155148147, guid: f4a11cf7e24bcfa43b3ee09544737e84,
+        type: 3}
+      propertyPath: scaleInFrame.x
+      value: 0.1291538
+      objectReference: {fileID: 0}
+    - target: {fileID: 5174562808155148147, guid: f4a11cf7e24bcfa43b3ee09544737e84,
+        type: 3}
+      propertyPath: scaleInFrame.y
+      value: 0.1291538
+      objectReference: {fileID: 0}
+    - target: {fileID: 5174562808155148147, guid: f4a11cf7e24bcfa43b3ee09544737e84,
+        type: 3}
+      propertyPath: scaleInFrame.z
+      value: 0.1291538
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4a11cf7e24bcfa43b3ee09544737e84, type: 3}

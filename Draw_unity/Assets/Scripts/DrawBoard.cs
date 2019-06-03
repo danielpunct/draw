@@ -1,8 +1,9 @@
 ﻿using System.Collections;
+using Gamelogic.Extensions;
 using TMPro;
 using UnityEngine;
 
-public class DrawBoard : MonoBehaviour
+public class DrawBoard : Singleton<DrawBoard>
 {
     public RenderTexture activeRT;
     public GameObject drawPrefab;
@@ -96,14 +97,21 @@ public class DrawBoard : MonoBehaviour
             //apply left percent
             resultValue *= (1 - drawPercent) / putPercent;
 
-            result.text = (drawPercent * 100).ToString("F2") + "%";
+            result.text = (drawPercent * 100).ToString("F2") + "%" + " \n( don't tap anywhere !! )";
+
+        if (drawPercent > 0.88f)
+        {
+            StartCoroutine(Game.Instance.ModelPassed());
+        }
+        else
+        {
+            StartCoroutine(Game.Instance.ModelFailed());
+        }
     }
 
     public void OnClearClick()
     {
-        foreach (Transform child in linesHolder)
-        {
-            Destroy(child.gameObject);
-        }
+        linesHolder.DestroyChildren();
+        result.text = "";
     }
 }
