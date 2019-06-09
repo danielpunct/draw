@@ -109,7 +109,7 @@ public class DrawBoard : Singleton<DrawBoard>
         }
     }
 
-    public void OnClearClick()
+    public void ClearBoard()
     {
         linesHolder.DestroyChildren();
         result.text = "";

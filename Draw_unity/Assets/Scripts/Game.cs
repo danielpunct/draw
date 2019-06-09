@@ -24,7 +24,7 @@ public class Game : Singleton<Game>
       loadedModel.ShowPassed();
       
       yield return  new WaitForSeconds(2);
-      DrawBoard.Instance.OnClearClick();
+      DrawBoard.Instance.ClearBoard();
       
       if (levels[currentLevel].models.Length == currentModel + 1)
       {
@@ -45,7 +45,7 @@ public class Game : Singleton<Game>
    public IEnumerator ModelFailed()
    {
       yield return  new WaitForSeconds(1);
-      DrawBoard.Instance.OnClearClick();
+      DrawBoard.Instance.ClearBoard();
    }
 
    void LoadModel()
