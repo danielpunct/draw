@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using Gamelogic.Extensions;
 using TMPro;
 using UnityEngine;
@@ -15,39 +16,53 @@ public class DrawBoard : Singleton<DrawBoard>
     public float lineWeight = 0.22f;
 
     public Transform linesHolder;
+
+    void Awake()
+    {
+        TouchHandler.ontouchPosition = OnFingerSet;
+    }
+
     IEnumerator Start()
     {
         yield return  new WaitForSeconds(1);
        SampleTexture(true); 
     }
 
-    public void Update()
+    void OnFingerSet(Vector2 screenPosition, TouchPhase phase)
     {
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began || Input.GetMouseButtonDown(0))
+        switch (phase)
         {
-            var mouseRay = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            var hit = Physics2D.Raycast(mouseRay, Vector2.zero);
-            if (hit.transform != null)
-            {
-                theTrail = Instantiate(drawPrefab, (Vector3) hit.point + Vector3.back,
-                    Quaternion.identity, linesHolder);
-                theTrail.layer = 8;
-            }
-        }
+            case TouchPhase.Began:
+                var mouseRay = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                var hit = Physics2D.Raycast(mouseRay, Vector2.zero);
+                if (hit.transform != null)
+                {
+//                    Debug.Log(hit.point + " " + mouseRay);
+                    theTrail = Instantiate(drawPrefab, (Vector3) hit.point + Vector3.back,
+                        Quaternion.identity, linesHolder);
+                    theTrail.layer = 8;
+                }
 
-        else if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved || Input.GetMouseButton(0))
-        {
-            var mouseRay = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            var hit = Physics2D.Raycast(mouseRay, Vector2.zero);
-            if (hit.transform != null)
-            {
-                theTrail.transform.position = (Vector3)hit.point + Vector3.back;
-            }
-        }
-        
-        else if (Input.touchCount> 0 && Input.GetTouch(0).phase == TouchPhase.Ended || Input.GetMouseButtonUp(0))
-        {
-           SampleTexture(false); 
+//                    theTrail = Instantiate(drawPrefab, mouseRay + Vector3.forward * 9,
+//                        Quaternion.identity, linesHolder);
+//                    theTrail.layer = 8;
+                break;
+
+            case TouchPhase.Moved:
+                mouseRay = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                hit = Physics2D.Raycast(mouseRay, Vector2.zero);
+                if (hit.transform != null)
+                {
+
+//                    Debug.Log(hit.point + " " + mouseRay);
+                    theTrail.transform.position = (Vector3) hit.point + Vector3.back;
+                }
+
+//              theTrail.transform.position = (Vector3) mouseRay + Vector3.forward * 9;
+                break;
+            case TouchPhase.Ended:
+                SampleTexture(false);
+                break;
         }
     }
 
