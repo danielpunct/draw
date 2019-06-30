@@ -1,8 +1,9 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [Serializable]
-public class Level 
+public class Level
 {
-   public Model[] models;
+    public Piece[] pieces;
 }

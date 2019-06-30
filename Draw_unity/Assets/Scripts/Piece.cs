@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
-public class Model : MonoBehaviour
+public class Piece : MonoBehaviour
 {
   public GameObject outlineHolder;
   public GameObject coloredHolder;
@@ -21,7 +21,7 @@ public class Model : MonoBehaviour
   public void ShowPassed()
   {
     coloredHolder.SetActive(true);
-    coloredHolder.transform.SetParent(Game.Instance.pictureHolder);
+    coloredHolder.transform.SetParent(Game.Instance.frameHolder);
     var seq = DOTween.Sequence().AppendInterval(1)
       .Append(coloredHolder.transform.DOLocalMove(positionInFrame, 1f))
       .Append(coloredHolder.transform.DOScale(scaleInFrame, 1));
